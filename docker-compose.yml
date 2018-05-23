@@ -36,8 +36,8 @@ services:
     build:
       dockerfile: ./Dockerfile
       context: .
-    image: rafm/person-project-mongo
-    container_name: person-proj-mongo
+    image: rafm/person-project-hbase
+    container_name: person-proj-hbase
     ports:
       - "8080:8080"
     environment:
