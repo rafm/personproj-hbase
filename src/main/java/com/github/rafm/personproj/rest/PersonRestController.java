@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.rafm.personproj.model.Person;
+import com.github.rafm.personproj.repository.hbase.PersonHbaseRepository;
 import com.github.rafm.personproj.service.PersonService;
 
 @RestController
@@ -29,6 +30,13 @@ import com.github.rafm.personproj.service.PersonService;
 public class PersonRestController {
 
 	@Autowired private PersonService personService;
+	
+	@Autowired private PersonHbaseRepository personHbaseRepository;
+	
+	@GetMapping("/hbase")
+	public Iterable<Person> findAllInHbase() {
+		return personHbaseRepository.findAll();
+	}
 	
 	// TODO Fix sorting
 	@GetMapping
